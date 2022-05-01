@@ -11,13 +11,9 @@ const forecast = (lat, long, callback) => {
             callback('Unable to connect to weather service!', undefined)
         } else {
             const currentObject = response.body.current
-            const {temperature: currentDegree, feelslike:feelsLikeDegree} = currentObject
+            const { temperature: currentDegree, feelslike: feelsLikeDegree, humidity: humidity } = currentObject
 
-            const data = {
-                degree: currentDegree,
-                feelsLikeDegree
-            }
-            callback(undefined, data)
+            callback(undefined, 'Temperature is ' + currentDegree + ', It feels like ' + feelsLikeDegree + '. Humidity is ' + humidity)
         }
 
     })
